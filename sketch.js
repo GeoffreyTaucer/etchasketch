@@ -1,17 +1,5 @@
-// var container = document.getElementById('#container')
-// var rows = []
-
-// function createBoard(size) {
-//     for (let i = 0; i < size; i++) {
-//         var squares = []
-//         for (let i = 0; i < size; i++) {
-//             squares.push(document.createElement('span'))
-//         }
-//         rows.push(cols)
-//     }
-// }
-
 let containderdiv = document.getElementById('#board');
+containderdiv.style.background = 'blue'
 
 function createRow (size) { // create a single row
     let row = document.createElement('div');
@@ -27,10 +15,8 @@ function createRow (size) { // create a single row
 }
 
 function createBoard(size) { // Stack rows
-    let row = createRow(size);
-
     for (let i = 0; i < size; i++) {
-        containderdiv.appendChild(row);
+        containderdiv.appendChild(createRow(size));
     }
 }
 

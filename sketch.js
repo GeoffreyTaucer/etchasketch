@@ -1,4 +1,4 @@
-const containderdiv = document.getElementById('#board');
+const containderdiv = document.getElementById('board');
 
 function createRow (size) { // create a single row
     let row = document.createElement('div');

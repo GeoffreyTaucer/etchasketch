@@ -1,8 +1,8 @@
-let containderdiv = document.getElementById('#board');
+const containderdiv = document.getElementById('#board');
 
 function createRow (size) { // create a single row
     let row = document.createElement('div');
-    let square = document.createElement('span');
+    let square = document.createElement('div');
     square.style.height = '10px';
     square.style.width = '10px';
     square.style.border = '1px solid black'
@@ -19,6 +19,6 @@ function createBoard(size) { // Stack rows
     }
 }
 
-const boardSize = parseInt(window.prompt("Enter board size", ""), 10); // get board size from user
+boardSize = 16;
 
-createBoard(boardSize)
+createBoard(boardSize);

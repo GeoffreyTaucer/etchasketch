@@ -2,13 +2,15 @@ const containderdiv = document.getElementById('board');
 
 function createRow(size) { // create a single row
     let row = document.createElement('div');
+    row.setAttribute('class', 'row')
   
     for (let i = 0; i < size; i++) {
       let square = document.createElement('span');
-      square.appendChild(document.createTextNode('_'))
-      square.style.height = '10px';
-      square.style.width = '10px';
-      square.style.border = '1px solid black'
+      square.setAttribute('class', 'square');
+      square.appendChild(document.createTextNode('o'));
+      square.style.color = 'white'
+      square.style.background = 'white'
+      square.style.border = 'solid black 1px'
       row.appendChild(square);
     }
     

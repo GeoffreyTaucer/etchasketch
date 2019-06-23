@@ -49,4 +49,9 @@ table {
 
 #board {
 	display: grid;
+	border: solid black 1px;
+}
+
+.square {
+	font-size: 0;
 }

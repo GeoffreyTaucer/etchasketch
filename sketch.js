@@ -5,9 +5,7 @@ function CreateBoard(size, color) {
   for (let i = 0; i < size * size; i++) {
     const square = document.createElement("div");
     square.classList.add("square");
-    // square.id = "square" + i.toString;
     square.style.color = "white";
-    square.style.border = "solid black 1px";
     square.textContent = i.toString();
     square.addEventListener("mouseover", function() {colorSquare(square, color)});
     containerdiv.appendChild(square);

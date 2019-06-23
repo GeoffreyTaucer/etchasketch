@@ -1,4 +1,4 @@
-function CreateBoard(size, color = "black") {
+function CreateBoard(size) {
   let boardDims = "repeat(" + size.toString() + ", 1fr)";
   containerdiv.style.gridTemplate = boardDims + "/" + boardDims;
   
@@ -7,7 +7,7 @@ function CreateBoard(size, color = "black") {
     square.classList.add("square");
     square.style.color = "white";
     square.textContent = i.toString();
-    square.addEventListener("mouseover", function() {colorSquare(square, color)});
+    square.addEventListener("mouseover", function() {ColorSquare(square)});
     containerdiv.appendChild(square);
   }
 }
@@ -24,7 +24,7 @@ function GetDim () {
   return maxDim - 2; // subtract two pixels, to allow for border
 }
 
-function colorSquare(square, color) {
+function ColorSquare(square) {
   square.style.color = color;
   square.style.backgroundColor = color;
 }
@@ -35,12 +35,35 @@ function resetBoard() {
   }
   let boardRes = parseInt(prompt("Please enter integer value for board resolution"));
   if (!boardRes) {
-    document.getElementById('status').textContent="No integet value given";
+    document.getElementById('status').textContent="No integer value given";
     CreateBoard(16);
   } else {
+    document.getElementById('status').textContent=""
     CreateBoard(boardRes);
   }
 }
+
+function CreatePalette(colors) {
+  let palette = document.getElementById("palette")
+  palette.style.gridTemplateColumns = "1fr 1fr"
+  colors.forEach(e => {
+    let paletteSquare = document.createElement("div");
+    paletteSquare.classList.add("color-square");
+    paletteSquare.style.color = e;
+    paletteSquare.style.backgroundColor = e;
+    paletteSquare.textContent = e;
+    paletteSquare.style.width = "50px";
+    paletteSquare.style.height = "50px";
+    paletteSquare.style.border = "solid black 1px";
+    paletteSquare.addEventListener("click", function() {
+      color = e;
+    });
+    paletteSquare.style.fontSize = "0";
+    palette.appendChild(paletteSquare);
+  });
+}
+
+let colors = ["red", "orange", "yellow", "green", "blue", "purple", "black", "white", "gray"];
 
 const containerdiv = document.getElementById('board');
 let sizeOfWindow = GetDim();
@@ -51,6 +74,7 @@ let resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', resetBoard);
 
 let numSquares = 16;
-let color = "black"
+let color = "black";
 
-CreateBoard(numSquares, color);
+CreateBoard(numSquares);
+CreatePalette(colors);
